@@ -1,0 +1,243 @@
+# =============================================================================
+# Transformer Deep Dive — .gitignore
+# =============================================================================
+
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Distribution / Packaging
+.Python
+build/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+MANIFEST
+sdist/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ── Jupyter Notebook ─────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# ── NumPy / PyTorch / HuggingFace cache ──────────────────────────────────────
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.ckpt
+
+# Framework caches (PyTorch, HuggingFace)
+.torch_cache/
+.hf_cache/
+.transformers_cache/
+
+# HuggingFace / datasets cache
+.cache/huggingface/
+datasets_cache/
+hub/
+models--*/
+
+# ── Tokenizer / vocab caches ─────────────────────────────────────────────────
+*.model
+*.vocab
+*.merges
+*.json.gz
+spiece.model
+
+# ── Dataset caches ───────────────────────────────────────────────────────────
+# 각 챕터의 실험에서 다운로드되는 raw / processed 데이터
+# Ch4 훈련 실험 (WikiText, C4 subset),
+# Ch5 효율화 측정 (long-context 합성 데이터),
+# Ch6-01 BERT (GLUE, SQuAD), Ch6-02 GPT (OpenWebText subset),
+# Ch6-03 T5 (C4 subset, GLUE), Ch6-04 ViT (CIFAR-10/100, ImageNet subset),
+# Ch7 ICL/CoT (GSM8K, BIG-Bench, MMLU)
+data/
+datasets/
+wikitext/
+openwebtext/
+c4/
+glue/
+squad/
+mmlu/
+gsm8k/
+big_bench/
+imagenet/
+cifar10/
+cifar100/
+raw/
+processed/
+!data/.gitkeep
+
+# 다운로드된 corpus / 텍스트 파일
+*.tsv
+*.jsonl
+*.txt.gz
+*.parquet
+*.arrow
+
+# ── Experiment outputs ───────────────────────────────────────────────────────
+# 생성된 시각화·attention map·플롯 (각 챕터)
+# Ch1: √d_k 분산 plot · softmax saturation · attention heatmap · multi-head 분석
+# Ch2: Pre-LN vs Post-LN gradient norm · FFN key-value memory · mask matrix
+# Ch3: Sinusoidal PE heatmap · RoPE 회전 시각화 · ALiBi extrapolation
+# Ch4: warmup LR schedule · AdamW vs Adam loss curve · mixed precision overflow
+# Ch5: Linear vs Standard 속도 비교 · Flash Attention wall-clock · MQA cache
+# Ch6: BERT/GPT/T5 fine-tune 결과 · ViT patch embedding · MoE routing 분포
+# Ch7: scaling law log-log fit · ICL accuracy · CoT prompt 결과
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+*.gif
+*.mp4
+*.webp
+
+# 훈련 결과 / 체크포인트
+results/
+outputs/
+logs/
+checkpoints/
+runs/
+wandb/
+mlruns/
+tensorboard/
+lightning_logs/
+*.log
+*.csv
+*.h5
+*.hdf5
+*.tfevents.*
+
+# 재현 실험 산출물 (논문별)
+reproductions/vaswani2017/*.pt
+reproductions/devlin2019_bert/*.pt
+reproductions/radford2018_gpt1/*.pt
+reproductions/radford2019_gpt2/*.pt
+reproductions/brown2020_gpt3/*.npz
+reproductions/raffel2020_t5/*.pt
+reproductions/dosovitskiy2021_vit/*.pt
+reproductions/xiong2020_preln/*.pt
+reproductions/shaw2018_relpe/*.pt
+reproductions/su2021_rope/*.pt
+reproductions/press2021_alibi/*.pt
+reproductions/katharopoulos2020_linear/*.pt
+reproductions/choromanski2021_performer/*.pt
+reproductions/beltagy2020_longformer/*.pt
+reproductions/zaheer2020_bigbird/*.pt
+reproductions/dao2022_flash/*.pt
+reproductions/shazeer2017_moe/*.pt
+reproductions/fedus2022_switch/*.pt
+reproductions/kaplan2020_scaling/*.npz
+reproductions/hoffmann2022_chinchilla/*.npz
+reproductions/wei2022_cot/*.npz
+
+# Pretrained weight cache
+pretrained/
+weights/
+
+# ── Flash Attention build artifacts ──────────────────────────────────────────
+.torch_extensions/
+*.ninja
+*.ninja_log
+*.ninja_deps
+flash_attn_build/
+
+# ── IDE / Editor ─────────────────────────────────────────────────────────────
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Vim / Emacs
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.directory
+
+# ── Documentation build ──────────────────────────────────────────────────────
+docs/_build/
+docs/generated/
+site/
+.mkdocs_cache/
+
+# ── Secrets / Credentials ────────────────────────────────────────────────────
+.env.local
+.env.*.local
+secrets.py
+credentials.json
+*.pem
+*.key
+openai_api_key*
+hf_token*
+
+# ── GPU / CUDA cache ─────────────────────────────────────────────────────────
+.nv_cache/
+.nvidia/
+*.cu.o
+
+# ── Miscellaneous ────────────────────────────────────────────────────────────
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+*.mo
+*.pot
