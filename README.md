@@ -22,13 +22,17 @@ $$\text{Var}\big((QK^\top)_{ij}\big) = \sum_{k=1}^{d_k} \text{Var}(Q_{ik} K_{jk}
 >
 > *가 임의의 offset $k$ 에 대해 $PE_{pos+k} = M_k\, PE_{pos}$ (선형 변환) 로 표현 가능함을 **2×2 회전 행렬로 분해** 해 증명할 수 있는 것은 다르다.*
 >
-> *Linear Attention 을 **이름으로 듣는 것** 과,*
+> *Linear Attention 을 **이름으로 듣는 것** 과, 결합 순서를*
 >
-> $$\mathrm{softmax}(QK^\top) V \;\to\; \phi(Q)\bigl(\phi(K)^\top V\bigr)$$
+> $$\mathrm{softmax}(QK^\top)\, V \quad \longrightarrow \quad \phi(Q)\bigl(\phi(K)^\top V\bigr)$$
 >
-> *의 결합 순서를 바꿔 $O(T^2 d) \to O(T d^2)$ 로 줄이는 Katharopoulos et al. 2020 의 **kernel trick** 과, RBF kernel 의 random feature 근사 (Performer 2021) 가 **같은 선상에 있다는 것** 을 증명할 수 있는 것은 다르다.*
+> *로 바꿔 복잡도를*
 >
-> *Flash Attention 이 **빠르다는 것** 과, 같은 $O(T^2)$ 연산을 **SRAM–HBM 메모리 계층의 IO-aware tiling** 으로 재배치하여 **wall-clock 2–4× 가속** 을 달성한다는 점, 그리고 이것이 **exact attention** (근사가 아님) 임을 알고리즘적으로 이해하는 것은 다르다.*
+> $$O(T^2 d) \;\longrightarrow\; O(T d^2)$$
+>
+> *로 줄이는 Katharopoulos et al. 2020 의 **kernel trick** 과, RBF kernel 의 random feature 근사 (Performer 2021) 가 **같은 선상에 있다는 것** 을 증명할 수 있는 것은 다르다.*
+>
+> *Flash Attention 이 **빠르다는 것** 과, 같은 `O(T^2)` 연산을 **SRAM–HBM 메모리 계층의 IO-aware tiling** 으로 재배치하여 **wall-clock 2–4× 가속** 을 달성한다는 점, 그리고 이것이 **exact attention** (근사가 아님) 임을 알고리즘적으로 이해하는 것은 다르다.*
 
 <br/>
 
